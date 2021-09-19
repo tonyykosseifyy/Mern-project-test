@@ -1,5 +1,5 @@
 // Creating The Express App
-require("dotenv").config();
+//require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -9,6 +9,8 @@ const authRoutes = require("./routes/auth");
 const fs = require('fs') ;
 import mongoose from "mongoose";
 const db = require("mongodb");
+
+
 
 app.use(express.json({ limit: "500" }));
 app.use(express.urlencoded({ extended: true }));
