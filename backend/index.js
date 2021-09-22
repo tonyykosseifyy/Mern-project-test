@@ -1,14 +1,14 @@
 // Creating The Express App
-//require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
+require("dotenv").config();
+const express = require("express")  ;
+const cors = require("cors") ;
 const app = express();
 const port = process.env.DB_HOST;
-const morgan = require("morgan");
-const authRoutes = require("./routes/auth");
-const fs = require('fs') ;
-import mongoose from "mongoose";
-const db = require("mongodb");
+const morgan = require("morgan")  ;
+const authRoutes = require("./routes/auth.js")  ;
+const fs = require('fs')  ;
+const mongoose = require("mongoose") ;
+const db = require("mongodb") ;
 
 
 

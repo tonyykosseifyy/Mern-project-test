@@ -1,7 +1,8 @@
-import User from "../models/user";
-import { hashPassword, comparePassword } from "../helpers/auth";
+const User = require ("../models/user.js") ;
+const { hashPassword, comparePassword } = require ("../helpers/auth.js" ) ;
+const jsonwebtoken = require("jsonwebtoken") ;
 
-export const register = async (req, res) => {
+exports.register = async (req, res) => {
   const { name, email, password, secret } = req.body;
 
   if (!name) return res.status(400).send("Name is required");
@@ -33,6 +34,12 @@ export const register = async (req, res) => {
 };
 
 
-export const login = async ( req , res ) => {
+exports.login = async ( req , res ) => {
+  console.log(req.body) ;
+  try {
 
+  } catch(err) {
+    console.log(err)
+    return res.status(400).send("Error , Try again...")
+  }
 };
