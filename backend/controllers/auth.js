@@ -35,9 +35,16 @@ exports.register = async (req, res) => {
 
 
 exports.login = async ( req , res ) => {
-  console.log(req.body) ;
   try {
+    const { email , password } = req.body ;
 
+    const user = await User.findOne({ email })
+    if(!user) return res.status(400).send("No user found") ;
+
+    const match = await comparePassword( password , user.password )  
+    if (!match) return res.status(400).send("Wrong password") ;
+    
+    
   } catch(err) {
     console.log(err)
     return res.status(400).send("Error , Try again...")
