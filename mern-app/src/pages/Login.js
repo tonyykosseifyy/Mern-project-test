@@ -1,5 +1,8 @@
 import React, { useState } from 'react' ;
 import axios from '../axios' ;
+import '../styles/Login.css' ;
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 const Login = () => {
@@ -11,34 +14,45 @@ const Login = () => {
     e.preventDefault() ;
     axios.get("/login" , { email , password })
     .then(response => console.log(response))
-    .cathc(err => console.log(err))
+    .catch(err => console.log(err))
   }
   return (
     <div className='login'>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor='email'>
-          Email : 
-        </label>
-        <input 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)}
-          id='email' 
-          type='email' 
-          placeholder='email' 
-        />
-        
-        
-        <label htmlFor='password'>
-          password : 
-        </label>
-        <input
-          type='password' 
-          id='password' 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type='submit'>Submit</button>
-      </form>
+      <section>
+        <h1>MERN TEST PROJECT</h1>
+        <p>After you have registered, please sign in to your account </p>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <TextField 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+            id='email' 
+            type='email' 
+            label="Email" 
+            size='small'
+            variant="outlined"
+            required
+          />
+          <TextField 
+            type='password' 
+            id='password' 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} 
+            label="Password" 
+            variant="outlined"
+            size='small'
+            required
+          />
+
+          <Button 
+            variant="contained" 
+            type='submit'
+          >
+            Login
+          </Button>
+        </form>
+
+
+      </section> 
     </div>
   )
 } ;
