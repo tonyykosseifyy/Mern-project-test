@@ -1,6 +1,6 @@
 const User = require ("../models/user.js") ;
 const { hashPassword, comparePassword } = require ("../helpers/auth.js" ) ;
-const jsonwebtoken = require("jsonwebtoken") ;
+const jwt = require("jsonwebtoken") ;
 
 exports.register = async (req, res) => {
   const { name, email, password, secret } = req.body;
@@ -35,6 +35,7 @@ exports.register = async (req, res) => {
 
 
 exports.login = async ( req , res ) => {
+  console.log('right endpoint ')
   try {
     const { email , password } = req.body ;
 
@@ -44,7 +45,14 @@ exports.login = async ( req , res ) => {
     const match = await comparePassword( password , user.password )  
     if (!match) return res.status(400).send("Wrong password") ;
     
+    const token = jwt.sign({ _id: user._id } , process.env.JWT_SECRET , { expiresIn: '7d'})
+    user.password = undefined ;
+    user.secret = undefined ;
     
+    res.json({
+      token , 
+      user 
+    })
   } catch(err) {
     console.log(err)
     return res.status(400).send("Error , Try again...")

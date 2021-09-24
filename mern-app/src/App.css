@@ -60,3 +60,7 @@ div > button:hover div > button::before {
   color: white ;
   padding: 4em ;
 }
+
+.active {
+  background-color: navy ;
+}
