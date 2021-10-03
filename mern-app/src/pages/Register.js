@@ -3,6 +3,8 @@ import axios from "../axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import { Link } from "react-router-dom";
+import '../styles/Register.css' ;
+
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -35,49 +37,53 @@ const Register = () => {
   return (
     <div className="register">
       <h1>Register Page</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <br />
-        <input
-          type="text"
-          id="name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
-        <label htmlFor="email">email:</label>
-        <br />
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">password:</label>
-        <br />
-        <input
-          type="password"
-          id="password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
-        <select>
-          <option>Favorite Color</option>
-          <option>Favorite Job</option>
-          <option>Favorite City</option>
-        </select>
+      <section>
+        <div className='register-design'>
+          <img 
+            src='https://img.freepik.com/free-vector/register-website-by-using-qr-code-user-enters-web-page-working-with-interface-access-account-3d-isometric-purple-gradient_87791-284.jpg?size=626&ext=jpg'
+            alt='design'
+          />
+        </div>
+          <form onSubmit={handleSubmit}>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label htmlFor="email">email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="password">password:</label>
+          <input
+            type="password"
+            id="password"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+          />
+          <select>
+            <option>Favorite Color</option>
+            <option>Favorite Job</option>
+            <option>Favorite City</option>
+          </select>
 
-        <input
-          type="text"
-          placeholder="answer"
-          value={secret}
-          onChange={(e) => setSecret(e.target.value)}
-        />
-        <button disabled={!email || !name || !secret || !pass} type="submit">
-          {loading ? "loading..." : "Submit"}
-        </button>
-      </form>
+          <input
+            type="text"
+            placeholder="answer"
+            value={secret}
+            onChange={(e) => setSecret(e.target.value)}
+          />
+          <button disabled={!email || !name || !secret || !pass} type="submit">
+            {loading ? "loading..." : "Submit"}
+          </button>
+        </form>
+      </section>
 
       <Modal
         title="Congratulations"

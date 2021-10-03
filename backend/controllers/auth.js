@@ -2,6 +2,8 @@ const User = require ("../models/user.js") ;
 const { hashPassword, comparePassword } = require ("../helpers/auth.js" ) ;
 const jwt = require("jsonwebtoken") ;
 
+
+
 exports.register = async (req, res) => {
   const { name, email, password, secret } = req.body;
 
@@ -35,7 +37,6 @@ exports.register = async (req, res) => {
 
 
 exports.login = async ( req , res ) => {
-  console.log('right endpoint ')
   try {
     const { email , password } = req.body ;
 
@@ -56,5 +57,18 @@ exports.login = async ( req , res ) => {
   } catch(err) {
     console.log(err)
     return res.status(400).send("Error , Try again...")
+  }
+};
+
+
+exports.currentUser = async (req , res) => {
+  console.log(req) ;
+  try {
+    const user = await User.findById(req.user._id) ;
+    if (user) return res.json({ ok : true }) ;
+    return res.json({ok : false })
+  } catch(err) {
+    console.log(err)
+    return res.status(400)
   }
 };
