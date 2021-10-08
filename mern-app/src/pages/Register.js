@@ -49,7 +49,6 @@ const Register = () => {
           <input
             type="text"
             id="name"
-            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

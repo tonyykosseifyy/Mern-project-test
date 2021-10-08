@@ -1,10 +1,11 @@
 .register , .register > section > form {
     display: flex ;
     flex-direction: column ;
-    align-items: center ;
 }
 
-
+.register {
+    align-items: center ;
+}
 .register > h1 {
     text-align: center ;
 }
@@ -17,38 +18,52 @@
     display: flex ;
     overflow: hidden ;
     box-shadow: 5px 5px 35px rgb(71, 70, 70) ;
+    max-width: 100vw ;
 }
 .register > section > form {
     padding: 3rem ;
     display: flex ;
-    flex-direction: column ;
-    align-items: flex-start ;
-    
+    flex-direction: column ;    
+    max-width: 800px ;
+    min-width: 400px ;
+    flex-grow: 1 ;
 }
 .register > section > form > label {
-    font-size: 1.02rem ;
     font-weight: bold ;
-    margin-bottom: 8px ;
+    margin-bottom: 5px ;
+    text-transform: capitalize;
 }
 .register > section > form > input {
-    border-radius: 8px ;
-    border: 1px solid #451391 ;
+    border-radius: 2px ;
+    border: 1px solid gray ;
     outline: none ;
-    font-size: 1.02rem ;
-    font-weight: bold ;
-    margin-bottom: 20px ;
-    height: 40px ;
-    padding: 5px 10px ;
-    transition: .3s ease ;
+    padding: 5px 15px ;
+    transition: .3s ease-in ;
+    margin-bottom: 10px ;
+    min-width: 0 ;
 }
 .register > section > form > input:focus {
-    border-width: 2px ;
+    border: 1px solid #24656D ;
+    box-shadow: .5px .5px 3px #24656D , -.5px -.5px 3px #24656D ;
 }
-.register > section > form > input::placeholder {
-    display: absolute ;
-    top: 50% ;
-    left: 20px ;
+.register > section > div {
+    flex-shrink: 1 ;
+    min-width: 300px ;
 }
-.register > section > .register-design > img {
+
+.register > section > div > img {
     object-fit: cover ;
+    height: 100% ;
+    width: 100% ;
 }
+
+@media screen and (max-width: 800px){
+    .register > section > div {
+        display: none ;
+    }
+    .register > section {
+        box-shadow: none ;
+        min-height: unset ;
+    }
+}
+
